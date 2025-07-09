@@ -1,0 +1,14 @@
+# Training configuration for DenseNet on Yahoo dataset
+#
+# This file ONLY contains parameters that are specific to the TRAINING process
+# for this particular experiment (DenseNet on Yahoo).
+
+training:
+  epochs: 15
+  lr: 0.01
+  expected_duration_hours: 37.5 # From paper's K40 estimate
+  
+  scheduler:
+    type: "MultiStepLR"
+    milestones: [5, 7]
+    gamma: 0.1 

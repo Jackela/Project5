@@ -1,0 +1,20 @@
+# Yelp Reviews Dataset Configuration
+# This file conforms to the structure of the DataConfig dataclass.
+
+data:
+  name: "yelp"
+  # Path to the dataset directory, relative to the project root.
+  path: "data/yelp"
+  train_file: "train.csv"
+  test_file: "test.csv"
+  class_file: "classes.txt"
+      
+  # The following are global defaults but can be overridden here.
+  # sequence_length: 1014
+  # alphabet: "..."
+
+# Dataset-specific training parameters can be placed here if needed,
+# but the primary training config is now in the training/ directory.
+# Example:
+# training:
+#   batch_size: 64 # Override global default for this dataset 

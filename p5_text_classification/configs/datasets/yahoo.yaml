@@ -1,0 +1,16 @@
+# Yahoo Answers Dataset Configuration
+# This file conforms to the structure of the DataConfig dataclass.
+
+data:
+  name: "yahoo"
+  # Path to the dataset directory, relative to the project root.
+  path: "data/yahoo"
+  train_file: "train.csv"
+  test_file: "test.csv"
+  class_file: "classes.txt"
+      
+# Dataset-specific training parameters can be placed here if needed,
+# but the primary training config is now in the training/ directory.
+# Example:
+# training:
+#   batch_size: 32 # Override global default for this dataset 

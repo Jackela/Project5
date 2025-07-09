@@ -1,0 +1,43 @@
+# Global Default Configuration
+# This serves as the single source of truth (SSOT) for all default parameters
+
+# Data Configuration
+data:
+  sequence_length: 1014
+  alphabet: "abcdefghijklmnopqrstuvwxyz0123456789-,;.!?:'\"/\\|_@#$%^&*~`+=<>()[]{} "
+  pad_token: "<PAD>"
+  unk_token: "<UNK>"
+  pad_token_id: 0
+  unk_token_id: 1
+
+# Training Configuration
+training:
+  # These parameters were moved from 'data' as they are training-specific
+  batch_size: 128
+  num_workers: 4
+  shuffle: true
+  epochs: 10
+  lr: 0.01
+  momentum: 0.9
+  weight_decay: 1e-4
+  scheduler:
+    type: "MultiStepLR"
+    milestones_ratio: [0.5, 0.75]  # Fraction of total epochs
+    gamma: 0.1
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s | %(levelname)s | %(message)s"
+
+# Device Configuration
+device:
+  preferred: "cuda"  # cuda, cpu, mps
+  
+# Reproducibility
+random:
+  seed: 42
+
+# Validation
+validation:
+  split_ratio: 0.2  # If no separate test set provided 

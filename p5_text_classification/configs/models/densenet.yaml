@@ -1,0 +1,26 @@
+# DenseNet Model Configuration
+# Based on "Densely Connected Convolutional Networks" paper
+
+model:
+  name: "densenet"
+  params:
+    # Model architecture
+    growth_rate: 12
+    block_config: [4, 4, 4]  # Corrected to match paper's spec (was [6, 12, 24, 16])
+    num_init_features: 24 # Reduced from 64 to be proportional to block sizes
+    bn_size: 4
+    compression: 0.5 # Explicitly added for clarity
+    drop_rate: 0.0 # Standard dropout
+    
+    # Text-specific adaptations
+    text_adaptations:
+      conv1d: true
+      input_channels: 1
+    
+# Model-specific training parameters  
+training:
+  lr: 0.01 # Adjusted to match global defaults for consistency
+  scheduler:
+    type: "MultiStepLR"
+    milestones_ratio: [0.5, 0.75] # Synced with global defaults
+    gamma: 0.1 

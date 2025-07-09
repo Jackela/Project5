@@ -1,0 +1,19 @@
+# Core deep learning and data handling
+torch
+pandas
+numpy
+
+# Configuration management
+PyYAML
+
+# Utilities
+tqdm
+setuptools
+
+# Visualization and Reporting (optional but recommended)
+matplotlib
+seaborn
+scikit-learn
+
+# Testing
+pytest 

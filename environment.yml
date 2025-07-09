@@ -1,0 +1,22 @@
+name: p5_env
+channels:
+  - pytorch
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pytorch
+  - torchaudio
+  - torchvision
+  - cpuonly  # If using CPU, remove if you have a CUDA-enabled GPU
+  - pip
+  - pip:
+    - pandas
+    - numpy
+    - PyYAML
+    - tqdm
+    - setuptools
+    - matplotlib
+    - seaborn
+    - scikit-learn
+    - pytest 

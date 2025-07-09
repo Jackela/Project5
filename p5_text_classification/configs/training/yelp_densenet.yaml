@@ -1,0 +1,22 @@
+# Training configuration for DenseNet on Yelp dataset
+
+# This file ONLY contains parameters that are specific to the TRAINING process
+# for this particular experiment (DenseNet on Yelp).
+#
+# It overrides the defaults found in `global_defaults.yaml`.
+# Model architecture is defined in `models/densenet.yaml`.
+# Data parameters are defined in `datasets/yelp.yaml`.
+
+training:
+  epochs: 15
+  lr: 0.01
+  expected_duration_hours: 15.0 # From paper's K40 estimate
+  
+  # The other parameters like momentum, weight_decay, batch_size, etc.,
+  # will be inherited from `global_defaults.yaml`.
+  
+  # The scheduler is also specific to this training run.
+  scheduler:
+    type: "MultiStepLR"
+    milestones: [5, 7]
+    gamma: 0.1 

@@ -1,0 +1,55 @@
+# VDCNN Model Configuration
+# Based on "Very Deep Convolutional Networks for Text Classification" paper
+
+model:
+  name: "vdcnn"
+  params:
+    depth: 9 # Default depth
+    
+    # Embedding layer configuration
+    embedding:
+      dim: 16
+      vocab_size: null  # Will be determined from data
+      
+    # Convolutional layers configuration
+    conv_layers:
+      initial_filters: 64
+      depths:
+        9:   [64, 128, 256, 512]
+        17:  [64, 128, 256, 512]
+        29:  [64, 128, 256, 512]
+        49:  [64, 128, 256, 512]
+      kernel_size: 3
+      
+    # Pooling configuration
+    pooling:
+      type: "k_max"
+      k: 8
+      
+    # Classifier configuration
+    classifier:
+      dropout: 0.5
+      hidden_dim: 2048
+      
+    # Depth-specific configurations
+    depth_configs:
+      9:
+        total_conv_blocks: 9
+        downsampling_positions: [4, 8]
+      17:
+        total_conv_blocks: 17
+        downsampling_positions: [4, 8, 12, 16]
+      29:
+        total_conv_blocks: 29
+        downsampling_positions: [4, 8, 12, 16, 20, 24, 28]
+      49:
+        total_conv_blocks: 49
+        downsampling_positions: [4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48]
+
+# Model-specific training parameters
+training:
+  lr: 0.01
+  scheduler:
+    type: "MultiStepLR"
+    milestones_ratio: [0.5, 0.75]
+    gamma: 0.1 

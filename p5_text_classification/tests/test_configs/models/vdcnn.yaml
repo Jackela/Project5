@@ -1,0 +1,8 @@
+# Minimal VDCNN model config for testing
+name: "vdcnn"
+num_classes: 2 # Assuming a binary classification for tests
+depth: 9
+embedding:
+  dim: 16
+pooling:
+  k: 4 

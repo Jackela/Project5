@@ -1,0 +1,41 @@
+# Minimal global defaults for testing
+data:
+  # Add required path fields for DataConfig instantiation
+  path: "data/test_dataset"
+  train_file: "train.csv"
+  test_file: "test.csv"
+  class_file: "classes.txt"
+  # Minimal alphabet and other settings for testing
+  sequence_length: 64
+  alphabet: "abc" # Minimal alphabet for testing
+  pad_token: "<PAD>"
+  unk_token: "<UNK>"
+  pad_token_id: 0
+  unk_token_id: 1
+  batch_size: 4
+  num_workers: 0
+  shuffle: false
+  max_samples: 100
+
+training:
+  epochs: 1
+  lr: 0.001
+  momentum: 0.9
+  weight_decay: 1e-5
+  scheduler:
+    type: "MultiStepLR"
+    milestones_ratio: [0.8]
+    gamma: 0.1
+
+validation:
+  split_ratio: 0.5
+
+logging:
+  level: "DEBUG"
+  format: "%(asctime)s | TEST | %(levelname)s | %(name)s | %(message)s"
+
+device:
+  preferred: "cpu"
+
+random:
+  seed: 123 

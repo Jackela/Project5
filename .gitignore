@@ -1,0 +1,28 @@
+# Python build artifacts and caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# IDE and OS specific files
+.idea/
+.vscode/
+.DS_Store
+
+# Testing and Caches
+.pytest_cache/
+.cache/
+
+# Datasets - Do not commit large data files
+/p5_text_classification/data/
+
+# Reports & Logs - Do not commit generated artifacts
+/REPORTS/
+*.log
+*.csv
+*.png
+*.pth
