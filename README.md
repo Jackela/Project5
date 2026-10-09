@@ -1,16 +1,18 @@
-# Production-Grade Text Classification Framework (Project5)
+# Text Classification Experiments (Project5)
 
-Bridging academic research and robust software engineering for deep learning text classification.
+A PyTorch research project comparing character-level VDCNN and DenseNet models on Yelp Reviews and Yahoo Answers.
 
 ## 📖 Project Goal & Motivation
 
-This project had a dual objective: first, to accurately reproduce the results of the VDCNN (Very Deep Convolutional Neural Networks for Text Classification) paper in PyTorch; second, to meticulously re-architect the research prototype into a modern, production-ready framework. The core motivation was to demonstrate the ability to transform theoretical academic concepts into elegant, flexible, and functional code suitable for real-world AI engineering.
+This project implements VDCNN and DenseNet text-classification models, with YAML experiment settings, training and evaluation code, and research documentation. It explores the models described in the referenced papers; an exact reproduction of their results has not been independently verified.
+
+Accuracy values in [FINAL_REPORT.md](FINAL_REPORT.md) are historical report claims. The repository does not include the corresponding training logs or model checkpoints needed to reproduce those values, and they have not been revalidated during this documentation update.
 
 ## 🏗️ Architecture & Technical Highlights
 
-*   **Configuration-Driven Framework**: The entire framework is designed to be fully configuration-driven, utilizing **YAML** files to manage and define all aspects of experiments, from dataset paths and model architectures to training hyperparameters.
-*   **SOLID Principles & Design Patterns**: The codebase was rigorously refactored following **SOLID principles**, promoting maintainability, flexibility, and extensibility. Advanced software design patterns were implemented, including the **Strategy Pattern** for swappable training logic and the **Factory Pattern with Dependency Injection (DI)** to dynamically construct components.
-*   **Bridging Research & Engineering**: This project served as a critical lesson in bridging the gap between academic research and production-grade AI engineering, solidifying the ability to transform theoretical concepts into robust, functional code.
+*   **Experiment Configuration**: YAML files specify training parameters, with model and dataset choices also supplied to the training command.
+*   **Model Implementations**: Contains character-level VDCNN and DenseNet implementations, plus a model factory and separate training/evaluation modules.
+*   **Research Materials**: Includes dataset instructions, experiment reports, and unit/integration test source files.
 
 ## 🛠️ Tech Stack
 
@@ -18,8 +20,6 @@ This project had a dual objective: first, to accurately reproduce the results of
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
 ![YAML](https://img.shields.io/badge/YAML-CB171E?style=for-the-badge&logo=yaml&logoColor=white)
 ![Pytest](https://img.shields.io/badge/pytest-0A9B71?style=for-the-badge&logo=pytest)
-
-*Also built with a strong adherence to **SOLID Principles** and advanced software design patterns.*
 
 ## 🚀 Installation & Usage
 
@@ -48,18 +48,20 @@ cd Project5
 ### 3. Install Dependencies
 
 ```bash
-pip install -r requirements.txt
+pip install -r p5_text_classification/requirements.txt
 ```
 
 ### 4. Run an Experiment
 
-Experiments are driven by YAML configuration files. To run a training experiment, specify a configuration file:
+Run the following from the repository root after placing the Yelp dataset files at `p5_text_classification/data/yelp/train.csv` and `p5_text_classification/data/yelp/test.csv`. Dataset CSV files are not bundled in the repository. The training entry point requires all three arguments: `--model`, `--dataset`, and `--config`; relative configuration paths are resolved from the repository root.
 
 ```bash
-python p5_text_classification/src/train.py --config configs/training/your_experiment.yaml
+python p5_text_classification/src/train.py --model vdcnn --dataset yelp --config p5_text_classification/configs/training/yelp_vdcnn.yaml
 ```
 
-Refer to `USAGE.md` and `DATASETS.md` for more detailed instructions on running experiments and dataset preparation.
+Use `--dataset yahoo` with `p5_text_classification/configs/training/yahoo_vdcnn.yaml` for the corresponding Yahoo experiment. Refer to [DATASETS.md](DATASETS.md) for dataset preparation. [USAGE.md](USAGE.md) contains additional historical usage notes; the command above reflects the current `train.py` argument parser.
+
+AI-assisted maintenance currently covers documentation and source checks. Training and application tests were not run for this README update.
 
 ## 📄 License
 
